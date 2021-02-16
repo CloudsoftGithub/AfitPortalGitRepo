@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>top_up_loan</title>
+        <link rel="shortcut icon"  href="#{request.contextPath}/resources/images/Logo.png" type="image/x-icon"/> 
+
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->s
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+
+    </h:head>
+
+    <h:body style="font-size: small;background: lightgray">
+        <div align="center">
+            <h:form >
+                <ui:include src="usersHeader.xhtml"/>
+            </h:form>
+        </div>
+
+        <b:container  fluid="false" > 
+            <div  >
+                <p:spacer height="10px" /> <!-- this is a space  -->
+            </div>
+
+
+            <b:form>
+                <p:growl id="messages" showDetail="true" sticky="true" />
+            </b:form>
+
+            <div class="col-sm-4" >
+                <h:form>
+                    <p:panel style="height: 600px; background: red ">
+
+                       <b:flyOutMenu style="font-size: x-large; background: #FF3B30">
+                                <b:navLink value="Dashboard" outcome="usersDashboard.xhtml" style="background: gray; color: white" ></b:navLink>
+<!--                                 <b:navLink value="Profile" outcome="profile.xhtml" ></b:navLink>
+ -->
+                                <b:dropMenu value="Loan Application">
+                                    <b:navLink value="New Loan" outcome="loan_Application.xhtml" > </b:navLink>
+                                    <!--                                     <b:navLink value="Top-up Loan" outcome="top_up_loan.xhtml"> </b:navLink>
+                                    -->
+                                </b:dropMenu>
+                                <b:navLink value="Savings Revision" outcome="savingsRevision.xhtml" ></b:navLink>
+                                <!-- <b:navLink value="Part Withdrawal" outcome="part_withdrawal.xhtml" ></b:navLink> -->
+                                <!-- <b:navLink value="Termination of Membership" outcome="termination_of_membership.xhtml" ></b:navLink> -->
+
+                                <b:dropMenu value="Reports">
+                                    <b:navLink value="Savings Reports" outcome="savings_report.xhtml" > </b:navLink>
+                                    <b:navLink value="Loan Reports"  outcome="loan-report.xhtml"> </b:navLink>
+                                </b:dropMenu>
+                            </b:flyOutMenu>
+
+                    </p:panel>
+
+                </h:form>
+
+
+
+            </div>
+
+            <div class="col-sm-8" >
+                <h:form>
+                    <p:panel style="height:  600px;">
+                        <h1 style="background: lightslategray;" > Top-Up Loan Application  </h1> 
+                        <p:separator />
+                        <h3>  <h:inputText class="col-sm-8 form-control" id="myuser"  value="#{usersLoginBEAN.serviceNo}" style="background: #66ff33"/> </h3>
+
+                    </p:panel>
+                </h:form>
+
+            </div>
+
+        </b:container>            
+
+
+        <!-- adding the footer -->
+
+
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.mixitup.min.js" ></script>
+        <script src="resources/js/wow.min.js"></script>
+        <script src="resources/js/jquery.validate.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.hoverdir.js"></script>
+        <script type="text/javascript" src="resources/js/jQuery.scrollSpeed.js"></script>
+        <script src="resources/js/script.js"></script>
+
+        <!-- js -->
+        <script type="text/javascript" src="resources/js/jquery-2.1.4.min.js"></script>
+        <!-- //js -->
+
+    </h:body>
+</html>
+
+
+

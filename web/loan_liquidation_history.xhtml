@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>loan_liquidation_history</title>
+        <link rel="shortcut icon"  href="#{request.contextPath}/resources/images/Logo.png" type="image/x-icon"/> 
+
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+
+    </h:head>
+
+    <h:body style="font-size: small;background: #b0c2ec">
+        <div align="center">
+            <h:form >
+                <ui:include src="usersHeader.xhtml"/>
+            </h:form>
+        </div>
+
+        <b:container  fluid="false" > 
+            <div  >
+                <p:spacer height="10px" /> <!-- this is a space  -->
+            </div>
+
+            <b:form>
+                <p:growl id="messages" showDetail="true" sticky="true" />
+            </b:form>
+
+            <div class="col-sm-4" >
+
+                <h:form>
+                    <p:panel style="height: 850px; background: red ">
+                        <b:flyOutMenu style="font-size: x-large; background: #FF3B30">
+                            <b:navLink value="Dashboard" outcome="usersDashboard.xhtml" style="background: gray; color: white" ></b:navLink>
+                            <!--                                 <b:navLink value="Profile" outcome="profile.xhtml" ></b:navLink>
+                            -->
+                            <b:dropMenu value="Loan Application">
+                                <b:navLink value="New Loan" outcome="loan_Application.xhtml" > </b:navLink>
+                                <b:navLink style="background: #d8cfe5" value="Loan Liquidation" outcome="loan_liquidation.xhtml" ></b:navLink>
+                                <b:navLink style="background: #d8cfe5" value="Loan Liquidation History" outcome="loan_liquidation_history.xhtml" ></b:navLink>
+
+                            </b:dropMenu>
+                            <b:navLink value="Savings Revision" outcome="savingsRevision.xhtml" ></b:navLink>
+
+                            <b:dropMenu value="Reports">
+                                <b:navLink value="Savings Reports" outcome="savings_report.xhtml" > </b:navLink>
+                                <b:navLink value="Loan Reports"  outcome="loan-report.xhtml"> </b:navLink>
+                            </b:dropMenu>
+
+                            <b:navLink value="E-Notice" outcome="view_notice.xhtml" style="background: #55e7e2; color: whitesmoke" ></b:navLink>
+
+                        </b:flyOutMenu>
+
+                    </p:panel>
+
+                </h:form>
+
+            </div>
+
+            <div class="col-sm-8" >
+                <b:form id="liquidationHistroy_Form">
+                    <p:panel id="liquidationHistroy_Panel" style="height:  850px; background: #7c8cb6">
+                        <h1 style="background: #7c46c6; color: whitesmoke" > Loan Liquidation History </h1> 
+                        <p:separator />
+                        <p:messages id="msg1" showDetail="false" autoUpdate="true" closable="true" style="font-size: medium; background: red; color: whitesmoke"/>
+                        <h:inputText class="col-sm-8 form-control text-left" id="myServiceNo"  value="#{usersLoginBEAN.serviceNo}" style="background: #66ff33;font-size: xx-large"/>  
+                        <h:inputText class="col-sm-8 form-control text-uppercase" id="name"  value="#{usersLoginBEAN.fullname}" style="background: lightyellow; font-size: x-large"/>  
+
+                        <p:separator />
+
+                        <b:panel title="Liquidation History" style=" height: 450px; background: #ab89ab" >
+
+
+                            <b:dataTable id="viewPreEnrolled" value="#{view_liquidation_history.liquidation_HistoryInfo}" var="item" style=" font-size: x-small; color: black; ">
+
+
+                                <f:facet name="header">
+                                    <h:outputText value="Liquidation History" />
+                                </f:facet>
+
+                                <b:column >
+                                    <f:facet name="header">
+                                        <h:outputText value="RecNo" style="width: 50px"></h:outputText>
+                                    </f:facet>
+                                    <h:outputText escape="false" value="#{item.recNo}"></h:outputText>
+                                </b:column>
+
+
+                                <b:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Service No" ></h:outputText>
+                                    </f:facet>
+                                    <h:outputText escape="false" value="#{item.serviceno}"></h:outputText>
+                                </b:column>
+
+                                <b:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Remark Date" ></h:outputText>
+                                    </f:facet>
+                                    <h:outputText escape="false" value="#{item.remDate}"></h:outputText>
+                                </b:column>
+                                <b:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Remark" ></h:outputText>
+                                    </f:facet>
+                                    <h:outputText escape="false" value="#{item.remark}"></h:outputText>
+                                </b:column>
+
+
+                            </b:dataTable>
+
+                            <p:separator />
+                            <b:row >
+                                <b:column medium-screen="5">
+                                    <p:commandButton  value="Click to view liquidation remarks" style="background:#3d59a2; color: whitesmoke ;height: 60px; width: 370px; font-size: small; "  process="@form" update="@form,liquidationHistroy_Form" ajax="false" />
+                                </b:column>
+
+                            </b:row>
+
+                            <p:separator />
+
+                        </b:panel>
+                    </p:panel>
+                </b:form>
+
+            </div>
+
+        </b:container>            
+
+
+        <!-- adding the footer -->
+
+
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.mixitup.min.js" ></script>
+        <script src="resources/js/wow.min.js"></script>
+        <script src="resources/js/jquery.validate.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.hoverdir.js"></script>
+        <script type="text/javascript" src="resources/js/jQuery.scrollSpeed.js"></script>
+        <script src="resources/js/script.js"></script>
+
+        <!-- js -->
+        <script type="text/javascript" src="resources/js/jquery-2.1.4.min.js"></script>
+        <!-- //js -->
+
+    </h:body>
+</html>
+
+
+

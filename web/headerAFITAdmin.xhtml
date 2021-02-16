@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+        <title>AFIT admin header</title>
+        <link rel="shortcut icon"  href="#{request.contextPath}/resources/images/Logo.png" type="image/x-icon"/> 
+
+    </h:head>
+
+
+    <h:body style="font-size: small;background: #b3b5df">
+        <b:form>
+
+            <b:navBar brand="AFIT Cooperative  |  " brandHref="index.xhtml" style="background: #f78386; color: whitesmoke; font-family: 'Kanit', sans-serif; font-size: x-larger">
+                <b:navbarLinks style="font-size: small;background: white; color: black">
+                    <b:navLink value="Dashboard" icon="home" outcome="AFITadminUserDashboard"></b:navLink>
+                    <b:navLink value="Pre-Erolment" outcome="view_enrolled_members" ></b:navLink>
+                    <b:navLink value="LoanApplication" outcome="view_Applied_loans" ></b:navLink>
+                    <b:navLink value="SavingsRevision" outcome="view_savings_Revision" ></b:navLink>
+                    <b:navLink value="E-Notice" outcome="annoucement" ></b:navLink>
+                    <b:navLink value="Approved-Members" outcome="approvedMemberShip" ></b:navLink>
+                    <b:navLink value="Pre-Liquidation" outcome="view_liquidation_request"> </b:navLink>
+                    <b:navLink value="Approved Liquidation" outcome="view_approved_liquidation_request" ></b:navLink>
+                    <b:commandButton class="form-control"  tooltip="click to signout" icon="log-out" value="Signout" style="background: red; color: white" action="#{rootLoginBEAN.signoutMethod()}"/>
+
+                </b:navbarLinks>
+            </b:navBar>
+        </b:form>
+
+        <!-- the bottom bar -->
+
+    </h:body>
+
+</html>
+

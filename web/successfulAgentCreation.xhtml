@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title> Successful Agent Creation</title>
+        <link rel="shortcut icon"  href="#{request.contextPath}/resources/images/Logo.png" type="image/x-icon"/> 
+
+    </h:head>
+
+    <h:body style="font-size: medium; padding: 20px">
+
+        <div align="center">
+            <h:form >
+                <p:panel  header="Successful Agent Signup" style=";width: 600px; background:#660066; align-self: center;animation-fill-mode: both;font-size: smaller">
+                    <h1 align="center" style="color:  white; background: green; ">
+                        Welcome:       #{agentCreationBEAN.agnt.username} !<br/>  </h1> 
+                    <p:separator/>
+                    <h:form>
+                        <h4 align="center" style="color: #660066">You have been created as an Agent. </h4>
+                        <!--                         <h4 align="left" style="color: #333333">Your Signup detail have been sent to your mail.</h4>
+                        -->
+                    </h:form>  
+
+                    <p:separator/>
+                    <div>
+                        <b:messages id="msg2" showDetail="false" style="background-color: #ff0066; color: white" showIcon="true"/>
+
+                        <p:panel  id="loginPanel" header="Login" style=";width: 580px; background: burlywood; align-self: center;animation-fill-mode: both;font-size: smaller">
+
+                            <p:separator/>
+                            <h:form>
+                                <h4 align="center" style="color: #333333"> Please Supply your 'Agent' username and password to login.</h4>
+                            </h:form>  
+
+
+                            <p:separator/>
+                            <div >
+                                <!--  <b:messages id="msg" /> -->
+                                <b:growl id="msgAgent" show-detail="false" delay="8000" />
+                                <b:panel title="Agent User Login Panel" style="width: 350px; height: 280px; color: white; font-size: medium;">
+                                    <h2 style="font-family: 'Pacifico', monospace; color: #936be8">Please, login here.</h2>
+
+                                    <b:inputText tooltip="supply your username" type="text" value="#{agentLoginBEAN.username}" class="form-control" label="username" placeholder="username" required="true" requiredMessage="Pls, supply your username" />
+                                    <b:inputSecret tooltip="supply your password" type="password" value="#{agentLoginBEAN.password}" class="form-control" label="password" placeholder="Password" required="true" requiredMessage="Pls, supply your password"/>      
+                                    <p:separator  />
+                                    <p:commandButton  style="background: #660066; color: white" value="login" action="#{agentLoginBEAN.agentLoginMthd()}" update="msgAgent"/> 
+                                </b:panel>
+                                <p:spacer height="100px"/>
+                            </div>
+
+                        </p:panel>
+
+                    </div>
+                </p:panel>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+

@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>How to Obtain PIN CODES</title>
+        <link rel="shortcut icon"  href="#{request.contextPath}/resources/images/Logo.png" type="image/x-icon"/> 
+
+
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+
+        <!-- Google web font -->
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine" />
+
+        <link href="https://fonts.googleapis.com/css?family=Anton&amp;subset=latin-ext" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Pacifico&amp;subset=latin-ext" rel="stylesheet"/>
+
+        <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700&amp;subset=latin-ext" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Shrikhand&amp;subset=latin-ext" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet"></link>
+
+
+        <!-- style css -->
+        <link href="css/style.css" rel="stylesheet"></link>
+
+
+    </h:head>
+
+
+    <h:body style="font-size: small;background: lightblue ">
+        <div align="center">
+            <h:form >
+
+                <ui:include src="header.xhtml"/>
+
+            </h:form>
+        </div>
+
+
+        <b:container  fluid="false" >
+            <div  >
+                <p:spacer height="10px" />
+            </div>
+
+
+            <b:form>
+
+                <b:jumbotron   class="col-sm-12" >
+                    <h2 align="center" style="font-family: 'Shrikhand', cursive; font-size: x-large; color: blue; background: lightslategray"> What is PIN CODE    </h2>
+                    <ol type="1" style="font-size: x-large; font-family:  'Kanit', sans-serif; color: black">
+                        <li>PIN Codes are set of system generated numbers</li>
+                        <li>PIN codes are used for verification during registration in this portal</li>
+                        <li>PIN codes are only used once</li>
+                    </ol>
+
+                    <h2 align="center" style="font-family: 'Shrikhand', cursive; font-size: x-large; color: blue;background: lightslategray"> How to Obtain PIN CODE    </h2>
+
+                    <div align="justify" >
+
+                        <ol type="1" style="font-size: x-large; font-family:  'Kanit', sans-serif; color: black">
+                            <li>To obtain PIN Codes, send a request into todunmoyebashir@gmail.com </li>
+                            <li>The site admin will guide you how to obtain the PIN codes </li>
+                            <li>The PIN codes will be sent to you after a successful verification </li>
+                            <li>Use the codes to signup </li>
+                            <li>Please, use a valid email ID during the registration process </li>
+                            <h2 style="color: blue"><b:navLink value="Click to signup" outcome="signup.xhtml" /></h2>
+                        </ol>
+
+                    </div>
+
+                </b:jumbotron>
+
+
+            </b:form>   
+
+            <section>
+                <canvas id="c" width="400" height="150"></canvas>
+                <footer>
+                    <!---just to create space-->
+                </footer>
+            </section>
+
+        </b:container>
+
+        <!-- adding the footer -->
+        <div align="center">
+            <h:form style="background: #336600;" >
+                <ui:include src="footer.xhtml"/>
+            </h:form>
+        </div>
+
+    </h:body>
+
+</html>
+

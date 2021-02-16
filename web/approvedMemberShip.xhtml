@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>approved members</title>
+        <link rel="shortcut icon"  href="#{request.contextPath}/resources/images/Logo.png" type="image/x-icon"/> 
+
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+
+        <!-- Google web font -->
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine" />
+
+        <link href="https://fonts.googleapis.com/css?family=Anton&amp;subset=latin-ext" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Pacifico&amp;subset=latin-ext" rel="stylesheet"/>
+
+        <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700&amp;subset=latin-ext" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Shrikhand&amp;subset=latin-ext" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet"></link>
+
+        <!-- style css -->
+        <link href="css/style.css" rel="stylesheet"></link>
+        <script data-ad-client="ca-pub-9824241097560337" async='async' src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+        </script>
+
+
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>  
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>  
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> 
+
+
+    </h:head>
+
+    <h:body style="font-size: small;background: #9999ff" >
+
+
+        <div align="center">
+            <h:form style="background: #336600;" >
+                <ui:include src="headerAFITAdmin.xhtml"/>
+            </h:form>
+        </div>
+
+
+        <b:container  fluid="true"> 
+            <div  >
+                <p:spacer height="10px" /> <!-- this is a space  -->
+            </div>
+            <b:messages id="msg1"  />
+ 
+            <b:form id="viewReEnrolledForm">
+
+                <div class="col-sm-2">
+                    <p:panel style="background: #ade9b2" id="viewAssignmentPanel">
+
+                        <b:growl id="msg"  showDetail="true"/>
+
+                        <div style="background: #495914">   <h4 align="left" style=" color: #d7d2e0; font-family: sans-serif; font:italic; font-size: x "> Select dates to view </h4>    </div>
+
+                        <br style="height: 30px"  />
+                        <h:outputText value="FROM Report Date [FORMAT: yyyy-mm-dd]" style="font-size: small; font-family: monospace" />
+                        <h:inputText  id="FROMReportDate"   value="#{view_Approved_Members.fromDate}"    required="true" requiredMessage="Pls, select the FROMReport date"/>
+                        <br /> <br />
+                        <h:outputText value="TO Report Date [FORMAT: yyyy-mm-dd]" style="font-size: small; font-family: monospace" />
+                        <h:inputText   id="ToReportDate" value="#{view_Approved_Members.toDate}"    required="true"  requiredMessage="Pls, select the TOReport date"/>
+                        <p:separator  />
+                        <div align="center" style="background: #9cd1f6">
+                            <p:commandButton action="#{view_Approved_Members.enableAprrovedButton()}"  style="background: #e6c599;  height: 50px; width: 150px" value="View "   update="msg1,viewPreEnrolled"/>
+
+                        </div>
+                        <p:separator  />
+                        <div align="center" style="background: #1aa169">
+                            <p:commandButton value="Generate Excel Report" action="#{view_Approved_Members.reportGeneration()}" style="background: #b1d0c3; height: 50px" update="msg1,viewPreEnrolled" />
+
+                        </div>
+
+                    </p:panel>
+
+                </div>
+
+                <div class="col-sm-10">
+
+
+                    <div align="center" style="background: #ade9b2; font-family: monospace; color: black; font-size: x-large"> Approved Members List </div>
+                    <p:separator/>
+
+                    <b:dataTable id="viewPreEnrolled"   value="#{view_Approved_Members.approvedMembersInfo}" var="item" style=" font-size: x-small; color: black;" >
+
+
+                        <f:facet name="header">
+                            <h:outputText value="Pre-Enrolled Memebers" />
+                        </f:facet>
+
+                        <b:column >
+                            <f:facet name="header">
+                                <h:outputText value="RecNo" style="width: 50px"></h:outputText>
+                            </f:facet>
+                            <h:outputText escape="false" value="#{item.recNo}"></h:outputText>
+                        </b:column>
+
+
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="Service No" ></h:outputText>
+                            </f:facet>
+                            <h:outputText escape="false" value="#{item.servceno}"></h:outputText>
+                        </b:column>
+
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="Reg. Date" ></h:outputText>
+                            </f:facet>
+                            <h:outputText escape="false" value="#{item.regDate}"></h:outputText>
+                        </b:column>
+
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="Surname" ></h:outputText>
+                            </f:facet>
+                            <h:outputText escape="false" value="#{item.surename}"></h:outputText>
+                        </b:column>
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="Othernames" ></h:outputText>
+                            </f:facet>
+                            <h:outputText escape="false" value="#{item.othernames}"></h:outputText>
+                        </b:column>
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="Non-Nigerian" ></h:outputText>
+                            </f:facet>
+                            <h:outputText escape="false" value="#{item.specifyNationality}"></h:outputText>
+                        </b:column>
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nationality" ></h:outputText>
+                            </f:facet>
+                            <h:outputText escape="false" value="#{item.nationality}"></h:outputText>
+                        </b:column>
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="State" ></h:outputText>
+                            </f:facet>
+                            <h:outputText escape="false" value="#{item.stateOfOrigin}"></h:outputText>
+                        </b:column>
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="LGA" ></h:outputText>
+                            </f:facet>
+                            <h:outputText escape="false" value="#{item.lgaOrigin}"></h:outputText>
+                        </b:column>
+
+
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="GSM" ></h:outputText>
+                            </f:facet>
+                            <h:outputText escape="false" value="#{item.gsm}"></h:outputText>
+                        </b:column>
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="Email" ></h:outputText>
+                            </f:facet>
+                            <h:outputText escape="false" value="#{item.emailId}"></h:outputText>
+                        </b:column>
+
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="Sex" ></h:outputText>
+                            </f:facet>
+                            <h:outputText escape="false" value="#{item.sex}"></h:outputText>
+                        </b:column>
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="Savings" ></h:outputText>
+                            </f:facet>
+                            <h:outputText escape="false" value="#{item.savings}"></h:outputText>
+                        </b:column>
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="Method" ></h:outputText>
+                            </f:facet>
+                            <h:outputText escape="false" value="#{item.method}"></h:outputText>
+                        </b:column>
+
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="Status" ></h:outputText>
+                            </f:facet>
+                            <h:outputText escape="false" value="#{item.status}"></h:outputText>
+                        </b:column>
+
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="Username" ></h:outputText>
+                            </f:facet>
+                            <h:outputText escape="false" value="#{item.username}"></h:outputText>
+                        </b:column>
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="Flag" ></h:outputText>
+                            </f:facet>
+                            <h:outputText escape="false" value="#{item.flag}"></h:outputText>
+                        </b:column>
+                    </b:dataTable>
+
+                </div>
+
+
+            </b:form>
+        </b:container>
+
+
+        <!-- adding the footer -->
+
+
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.mixitup.min.js" ></script>
+        <script src="resources/js/wow.min.js"></script>
+        <script src="resources/js/jquery.validate.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.hoverdir.js"></script>
+        <script type="text/javascript" src="resources/js/jQuery.scrollSpeed.js"></script>
+        <script src="resources/js/script.js"></script>
+    </h:body>
+</html>
+

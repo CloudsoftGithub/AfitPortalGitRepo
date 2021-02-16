@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <title>Admin Login</title>
+        <link rel="shortcut icon"  href="#{request.contextPath}/resources/images/Logo.png" type="image/x-icon"/> 
+
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+        <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css"></link>
+
+        <!-- Google web font -->
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine" />
+
+        <link href="https://fonts.googleapis.com/css?family=Anton&amp;subset=latin-ext" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Pacifico&amp;subset=latin-ext" rel="stylesheet"/>
+
+        <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700&amp;subset=latin-ext" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Shrikhand&amp;subset=latin-ext" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet"></link>
+
+
+        <!-- style css -->
+        <link href="css/style.css" rel="stylesheet"></link>
+
+        <!-- Web of trust -->
+        <meta name="wot-verification" content="059af010b1d56404f726"/> 
+
+    </h:head>
+
+    <h:body style="background: #7376de">
+        <b:form>
+            <p:growl id="messages" showDetail="true" sticky="true" />
+
+        </b:form>
+
+        <div>
+            <b:form>
+                <ui:include src="header.xhtml"/>
+            </b:form>
+        </div>
+
+
+        <b:container  fluid="false" >
+            <div>
+                <p:spacer height="60px" /> <!-- this is a space  -->
+            </div>
+
+
+            <b:form>
+
+                <b:messages id="msg2" />
+
+                <br/> 
+ 
+                <div class="col-sm-4">
+
+                    <p:spacer height="100px"/>
+                </div>
+
+
+
+                <div class="col-sm-4">
+                    <!--  <b:messages id="msg" /> -->
+                    <b:growl id="msgAdmin" show-detail="false" delay="8000" />
+                    <b:panel title="Admin User Login Panel" style="background:  #225e6c; color: white; font-size: medium">
+                        <h2 style="font-family: 'Pacifico', monospace; color: #936be8">Please, login here.</h2>
+                        <br style="height: 30px"  />
+
+                        <b:inputText tooltip="supply your username" type="text" value="#{adminLoginBEAN.username}" class="form-control" label="username" placeholder="username" required="true" requiredMessage="Pls, supply your username" />
+                        <b:inputSecret tooltip="supply your password" type="password" value="#{adminLoginBEAN.password}" class="form-control" label="password" placeholder="Password" required="true" requiredMessage="Pls, supply your password"/>      
+                        <p:separator  />
+                        <p:commandButton  style="background: blue; color: white" value="login" action="#{adminLoginBEAN.adminuserLogin()}" update="msgAdmin"/> 
+                    </b:panel>
+                    <p:spacer height="100px"/>
+                </div>
+            </b:form>
+
+            <div class="col-sm-4">
+
+                <p:spacer height="30px"/>
+            </div>
+        </b:container>
+
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.mixitup.min.js" ></script>
+        <script src="resources/js/wow.min.js"></script>
+        <script src="resources/js/jquery.validate.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.hoverdir.js"></script>
+        <script type="text/javascript" src="resources/js/jQuery.scrollSpeed.js"></script>
+        <script src="resources/js/script.js"></script>
+
+        <!-- js -->
+        <script type="text/javascript" src="resources/js/jquery-2.1.4.min.js"></script>
+        <!-- //js -->
+    </h:body>
+</html>
+

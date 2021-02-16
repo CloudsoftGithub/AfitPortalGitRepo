@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>loan_application</title>
+        <link rel="shortcut icon"  href="#{request.contextPath}/resources/images/Logo.png" type="image/x-icon"/> 
+
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+
+    </h:head>
+
+    <h:body style="font-size: small;background: #036b95">
+        <div align="center">
+            <h:form >
+                <ui:include src="usersHeader.xhtml"/>
+            </h:form>
+        </div>
+
+        <b:container  fluid="false" > 
+            <div  >
+                <p:spacer height="10px" /> <!-- this is a space  -->
+            </div>
+
+            <b:form>
+                <p:growl id="messages" showDetail="true" sticky="true" />
+            </b:form>
+
+               <div class="col-sm-4" >
+
+                <h:form>
+                    <p:panel style="height: 850px; background: red ">
+                        <b:flyOutMenu style="font-size: x-large; background: #FF3B30">
+                            <b:navLink value="Dashboard" outcome="usersDashboard.xhtml" style="background: gray; color: white" ></b:navLink>
+                            <!--                                 <b:navLink value="Profile" outcome="profile.xhtml" ></b:navLink>
+                            -->
+                            <b:dropMenu value="Loan Application">
+                                <b:navLink value="New Loan" outcome="loan_Application.xhtml" > </b:navLink>
+                                <b:navLink style="background: #d8cfe5" value="Loan Liquidation" outcome="loan_liquidation.xhtml" ></b:navLink>
+                                 <b:navLink style="background: #d8cfe5" value="Loan Liquidation History" outcome="loan_liquidation_history.xhtml" ></b:navLink>
+ 
+                            </b:dropMenu>
+                            <b:navLink value="Savings Revision" outcome="savingsRevision.xhtml" ></b:navLink>
+
+                            <b:dropMenu value="Reports">
+                                <b:navLink value="Savings Reports" outcome="savings_report.xhtml" > </b:navLink>
+                                <b:navLink value="Loan Reports"  outcome="loan-report.xhtml"> </b:navLink>
+                            </b:dropMenu>
+
+                            <b:navLink value="E-Notice" outcome="view_notice.xhtml" style="background: #55e7e2; color: whitesmoke" ></b:navLink>
+
+                        </b:flyOutMenu>
+
+                    </p:panel>
+
+                </h:form>
+ 
+            </div>
+            <div class="col-sm-8" >
+                <b:form id="loan_applicationForm" >
+                    <p:panel id="loan_applicationPanel" style="height:  880px;">
+                        <h1 style="background: lightblue" > Loan Application  </h1> 
+                        <p:separator />
+                        <b:messages id="msg1" showDetail="true"  style="font-size: large"/>
+                        <h:inputText class="col-sm-8 form-control text-left" id="myServiceNo"  value="#{usersLoginBEAN.serviceNo}" style="background: #66ff33;font-size: xx-large"/>  
+                        <h:inputText class="col-sm-8 form-control text-uppercase" id="myusername"  value="#{usersLoginBEAN.fullname}" style="background: lightyellow; font-size: x-large"/>  
+
+                        <p:separator />
+                        <b:panel title="Section I - Auto generated" style="background: #d4cd80; ">
+
+                            <b:row>
+                                <b:column medium-screen="5">
+                                    <b:inputText id="ServiceNo" tooltip="this field will be populated automatically. In case it appears blank. Pls, login again" disabled="true" value="#{usersLoginBEAN.serviceNo}" label="Service No:" required="true" requiredMessage="Please, enter service no."/>
+                                </b:column>
+
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="11" >
+                                    <b:inputText id="ApplicantName" class="form-control" disabled="true" value="#{usersLoginBEAN.fullname}" label="Applicant Name:" required="true" requiredMessage="Please, enter service no."/>
+                                </b:column>
+                            </b:row>
+
+                        </b:panel>
+
+                        <b:panel title="Section II - Manual Entry by User" style="background:  #d4cd80">
+
+                            <b:row>
+                                <b:column medium-screen="5" >
+                                    <b:selectOneMenu id="loan_type" class="form-control" value="#{loan_applicationBEAN.loantype}" label="Loan Type: " required="true" requiredMessage="Please, enter loan type" style="background: lightcyan; color: grey">
+                                        <f:selectItem itemLabel="Select Loan Type" itemValue="" />
+                                        <f:selectItem itemLabel="Main Loan" itemValue="Main Loan" />
+                                        <f:selectItem itemLabel="Properties Loan" itemValue="Properties Loan" /> 
+                                        <f:selectItem itemLabel="Other Loans" itemValue="Other Loans" /> 
+                                    </b:selectOneMenu> 
+                                </b:column>
+                                <b:column medium-screen="5" offset="1">
+                                    <b:inputText id="Loan_Amount" disabled="false" value="#{loan_applicationBEAN.loanAmount}" label="Loan Amount" required="true"  requiredMessage="Please, enter loan amount." />
+                                </b:column>
+                            </b:row>
+                            <b:row>
+
+                                <b:column medium-screen="5" >
+
+                                    <b:selectOneMenu id="pay_period" class="form-control"  value="#{loan_applicationBEAN.period}" label="Pay Period(state no. of months): " required="true"  requiredMessage="Please, enter pay period." >
+                                        <f:selectItem itemLabel="Select Pay Period in  months" itemValue="" />
+                                        <f:selectItem itemLabel="1" itemValue="1" />
+                                        <f:selectItem itemLabel="2" itemValue="2" />
+                                        <f:selectItem itemLabel="3" itemValue="3" />
+                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                        <f:selectItem itemLabel="5" itemValue="5" />
+                                        <f:selectItem itemLabel="6" itemValue="6" />
+                                        <f:selectItem itemLabel="7" itemValue="7" />
+                                        <f:selectItem itemLabel="8" itemValue="8" />
+                                        <f:selectItem itemLabel="9" itemValue="9" />
+                                        <f:selectItem itemLabel="10" itemValue="10" />
+                                        <f:selectItem itemLabel="11" itemValue="11" />
+                                        <f:selectItem itemLabel="12" itemValue="12" />
+                                        <f:selectItem itemLabel="13" itemValue="13" />
+                                        <f:selectItem itemLabel="14" itemValue="14" />
+                                        <f:selectItem itemLabel="15" itemValue="15" />
+                                        <f:selectItem itemLabel="16" itemValue="16" />
+                                        <f:selectItem itemLabel="17" itemValue="17" />
+                                        <f:selectItem itemLabel="18" itemValue="18" />
+                                        <f:selectItem itemLabel="19" itemValue="19" />
+                                        <f:selectItem itemLabel="20" itemValue="20" />
+                                    </b:selectOneMenu>
+                                </b:column>
+                            </b:row>
+
+
+                            <b:row >
+                                <b:column offset="6">
+                                   
+                                    <p:commandButton  value="Pre-Process Loan"  action="#{loan_applicationBEAN.preProcessLoanMthd()}" style="height: 60px; width: 280px; font-size: large; color: #833578"  process="@form" update="@form,msg1" ajax="false" />
+
+                                </b:column>
+                            </b:row>
+                        </b:panel>
+
+                    </p:panel>
+                </b:form>
+
+            </div>
+
+        </b:container>            
+
+
+        <!-- adding the footer -->
+
+
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.mixitup.min.js" ></script>
+        <script src="resources/js/wow.min.js"></script>
+        <script src="resources/js/jquery.validate.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.hoverdir.js"></script>
+        <script type="text/javascript" src="resources/js/jQuery.scrollSpeed.js"></script>
+        <script src="resources/js/script.js"></script>
+
+        <!-- js -->
+        <script type="text/javascript" src="resources/js/jquery-2.1.4.min.js"></script>
+        <!-- //js -->
+
+    </h:body>
+</html>
+
+
+

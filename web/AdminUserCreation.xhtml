@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Admin Users Creation</title>
+        <link rel="shortcut icon"  href="#{request.contextPath}/resources/images/Logo.png" type="image/x-icon"/> 
+
+    </h:head>
+    <h:body style="background: #7647d7">
+
+        <h:form>
+
+            <div>
+                <b:form>
+                    <ui:include src="RootuserHeader.xhtml" />
+                </b:form>  
+            </div>
+
+            <div class="col-sm-4">
+
+            </div>
+            <div class="col-sm-4" >
+                <p:spacer height="30px" />
+
+                <b:form style="color: white; background: white">
+                    <b:messages style="width: 520px" id="msg" />
+                    <b:panel title="Admin User Creation Panel"  style="background: #000; width: 500px; color: #999999; font-size: medium">
+                        <h3 align="center" style="font-family: 'Pacifico', monospace; color: whitesmoke"> Create Adminuser Here. </h3>
+                        <br style="height: 30px"  />
+
+                        <b:inputText tooltip="supply your username" type="text" value="#{adminUserBEAN.signp.username}" class="form-control" label="Username:" placeholder="username" required="true" requiredMessage="Pls, supply username" />
+                        <b:inputSecret tooltip="supply your password" type="password" value="#{adminUserBEAN.signp.password}" class="form-control" label="Password:" placeholder="Password" required="true" requiredMessage="Pls, supply password"/>      
+                        <b:inputText tooltip="supply GsmNo" type="text" value="#{adminUserBEAN.signp.gsmNo}" class="form-control" label="Gsm:" placeholder="Gsm" required="true" requiredMessage="Pls, supply GsmNo" />
+                        <b:inputText  id="email1" value="#{adminUserBEAN.signp.emailID}"  required="true" label="Email ID:" p:placeholder="a valid email id" validatorMessage="Pls, provide a valid E-mail ID of type:
+                                      myemail@domain.com!, you may be contacted via your email" onkeyup="true" > 
+                            <f:validateRegex  pattern="([a-zA-Z0-9]+)([\_\.\-{1}])?([a-zA-Z0-9]+)\@([a-zA-Z0-9]+)([\.])([a-zA-Z\.]+)" /> 
+                        </b:inputText>  
+                        <b:inputText tooltip="supply Name" type="text" value="#{adminUserBEAN.signp.name}" class="form-control" label="Name:" placeholder="Fullname" required="true" requiredMessage="Pls, supply name"/>      
+                        <p:separator  />
+                        <p:commandButton  style="background: #000; color: white" value="Create User" process="@form" action="#{adminUserBEAN.adminUsersMthd()}" update="msg"/> 
+                    </b:panel>
+                </b:form>
+            </div>
+
+            <div class="col-sm-4">
+                <!-- this is a space -->
+            </div>
+
+        </h:form>
+    </h:body>
+</html>
+

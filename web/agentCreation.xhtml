@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Agents Creation</title>
+        <link rel="shortcut icon"  href="#{request.contextPath}/resources/images/Logo.png" type="image/x-icon"/> 
+
+    </h:head>
+    <h:body style="background: #936be8; padding: 5px">
+
+        <h:form>
+
+            <div>
+                <b:form>
+                    <ui:include src="AdminUserHeader.xhtml" />
+                </b:form>  
+            </div>
+
+            <div class="col-sm-4">
+
+            </div>
+
+            <div class="col-sm-4">
+                <b:form>
+                    <b:messages style="width: 520px" id="msg" />
+                    <b:panel title="Agent Creation Panel"  style="background:  #ffffff; width: 520px; color: #999999; font-size: medium">
+                        <h3 align="center" style="font-family: 'Pacifico', monospace; color: #936be8">Create Agent</h3>
+                        <br style="height: 30px"  />
+
+                        <b:inputText tooltip="supply Name" type="text" value="#{agentCreationBEAN.agnt.agentFullame}" class="form-control" label="Agent Fullname" placeholder="fullname" required="true" requiredMessage="Pls, supply agent's full name"/>      
+
+                        <b:inputText tooltip="supply your username" type="text" value="#{agentCreationBEAN.agnt.username}" class="form-control" label="Username" placeholder="username" required="true" requiredMessage="Pls, supply username" />
+                        <b:inputSecret tooltip="supply your password" type="password" value="#{agentCreationBEAN.agnt.password}" class="form-control" label="Password" placeholder="Password" required="true" requiredMessage="Pls, supply password"/>      
+                        <b:inputText tooltip="supply GsmNo" type="text" value="#{agentCreationBEAN.agnt.gsm}" class="form-control" label="Gsm" placeholder="Gsm" required="true" requiredMessage="Pls, supply GsmNo" />
+                        <b:inputText tooltip="supply your e-mail" type="text" value="#{agentCreationBEAN.agnt.email}" class="form-control" label="E-mail" placeholder="e-mail" required="true" requiredMessage="Pls, supply email" validator-message="Supply a valid e-mail id" >
+                            <f:validateRegex  pattern="[a-zA-Z0-9_]*[@]{1}[a-zA-Z0-9_]*[.]{1}[a-zA-Z]{2,3}" /> 
+                        </b:inputText>
+                        <p:separator  />
+                        <p:commandButton  style="background: #936be8; color: black" value="Create Agent" process="@form" action="#{agentCreationBEAN.agentCreathMthd()}" update="msg"/> 
+                    </b:panel>
+                </b:form>
+            </div>
+
+            <div class="col-sm-4">
+                <!-- this is a space -->
+            </div>
+
+        </h:form>
+    </h:body>
+</html>
+

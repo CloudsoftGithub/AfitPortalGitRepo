@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Rootuser Header</title>
+        <link rel="shortcut icon"  href="#{request.contextPath}/resources/images/Logo.png" type="image/x-icon"/> 
+
+    </h:head>
+    <h:form>
+
+        <b:container  fluid="true" >
+            <div>
+                <b:navBar brand="Root User Dashboard " brand-href="rootuserDashboard.xhtml" style="background: blue; color: white; font-family: sans-serif; font-size: xx-larger" inverse="true">
+                    <b:navbarLinks >
+                        <b:navLink value="About" >  </b:navLink>
+                        <b:navLink value="Admin User Creation" outcome="AdminUserCreation.xhtml">  </b:navLink>
+                        <b:commandButton class="form-control"  tooltip="click to signout" icon="log-out" value="Signout" style="background: red; color: white" action="#{rootLoginBEAN.signoutMethod()}"/>
+
+                    </b:navbarLinks>
+                </b:navBar>
+            </div>
+        </b:container>
+    </h:form>
+    <h:body>
+    </h:body>
+</html>
+

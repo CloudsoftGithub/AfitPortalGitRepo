@@ -1,0 +1,472 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>signup</title>
+        <link rel="shortcut icon"  href="#{request.contextPath}/resources/images/Logo.png" type="image/x-icon"/> 
+
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+
+        <!-- Google web font -->
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine" />
+
+        <link href="https://fonts.googleapis.com/css?family=Anton&amp;subset=latin-ext" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Pacifico&amp;subset=latin-ext" rel="stylesheet"/>
+
+        <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700&amp;subset=latin-ext" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Shrikhand&amp;subset=latin-ext" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet"></link>
+
+
+        <!-- style css -->
+        <link href="css/style.css" rel="stylesheet"></link>
+
+    </h:head>
+
+    <h:body style="font-size: small;background: #9999ff">
+        <div align="center">
+            <h:form >
+                <ui:include src="header.xhtml"/>
+            </h:form>
+        </div>
+
+        <b:container  fluid="false" >
+            <div>
+                <p:spacer height="100px" /> <!-- this is a space  -->
+            </div>
+
+            <div class="col-sm-1">
+                <!-- a one col. space -->
+            </div>
+
+            <div  class="col-sm-10 container-fluid"  > <!-- bigger div -->
+
+                <h:form id="MembershipRegForm">
+
+                    <p:panel id="MembershipCompleteRegPanel" style="width:1030px; height:1450px; background: none">
+
+                        <div align="left" class="col-sm-12" > 
+                            <p:messages  id="msg2" showDetail="true"  style="font-family: 'Kanit', sans-serif; color: black;font-size: large "   autoUpdate="true" closable="true"/>
+                        </div>
+
+                        <b:carousel id="wizard" styleClass="wizardPseudoClass"
+                                    style="width:1000px; padding-top:10px; "
+                                    startAnimation="false"
+                                    showIndicators="false"
+                                    wrap="false">
+                            <b:carouselItem style="width:1000px; height:1400px; background: none" class="form-control"  >
+
+                                <b:panel id="MembershipRegStep1Panel" look="default"  style="font-family: 'Kanit', sans-serif; color: black; " title="Membership Registration Form | Step 1" class="col-sm-12"> 
+
+
+                                    <div align="left" class="col-sm-12" style="background: lightsteelblue">
+                                        <!--
+                                           <h4 style="font-family: 'Shrikhand', cursive; color: blueviolet"> Obtain your Pin CODES via afitcooperative@gmail.com </h4>
+   
+                                           <h4 style="font-family: monospace, cursive; color: blue"> <b:navLink  value="Read more on Pin Codes" outcome="howToObtainPinCode.xhtml" /> </h4>
+                                           
+                                        -->
+                                        <h4 style="background: #7311aa; color: whitesmoke"> Important Information</h4>
+                                        <div>
+                                            <h5> AFIT Members should note that: </h5>
+                                            <ol>
+                                                <li> AFIT Online signup is subject to 'approval by the site admin'  </li>
+                                                <li> A newly signedup account will only be ready atfer it's been approved </li>
+                                                <li> Members are strongly advised to supply correct information while signing up </li>
+                                                <li> Members should NOT disclose their login credential to anybody</li>
+                                                <li>Members should always ask questions in case there gray areas while filling the online signup form </li>
+
+                                            </ol>
+
+                                        </div>
+
+                                        <marquee behavior="scroll" scrolldelay="200" direction="left" > <i style="color: red" class="fa fa-hand-o-up"  aria-hidden="true"></i> 
+                                             Please, read the above information before filling this form.
+                                        </marquee>
+                                    </div>
+
+                                    <p:spacer height="5px" />
+
+                                    <!--
+                                     <div class="col-sm-12">
+                                         <b:row>
+                                             <b:column medium-screen="8">
+                                                 <b:growl delay="10000" timer="40"  id="m1" show-detail="true" />
+                                             </b:column>
+                                         </b:row>    
+                                     </div>
+                                    -->
+
+                                    <div class="col-sm-12">
+                                        <b:row>
+                                            <b:column medium-screen="5">
+                                                <b:inputText id="ServiceNo"  value="#{signupBean.signp.servceno}" label="Service No:" required="true" requiredMessage="Pls, enter service no."/>
+                                            </b:column>
+
+                                            <b:column medium-screen="5" offset="1">
+                                                <b:dateTimePicker id="regDate" show-time="false" show-today-button="true" value="#{signupBean.signp.regDate}" required="true" label="Reg. Date:" tooltip="enter the Registration Date" />
+                                            </b:column>
+                                        </b:row>
+
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <b:row>
+                                            <b:column medium-screen="5">
+                                                <b:inputText id="surname"  value="#{signupBean.signp.surename}"  label="Surname:" required="true" requiredMessage="Pls, enter surname"/>
+                                            </b:column>
+
+                                            <b:column medium-screen="5" offset="1">
+                                                <b:inputText id="othername"  value="#{signupBean.signp.othernames}" label="Other Names:" required="true" requiredMessage="Pls, enter other names"/>
+                                            </b:column>
+                                        </b:row>
+
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <b:row>
+                                            <b:column medium-screen="5" >
+                                                <b:inputText id="SpecifyNationality"  value="#{signupBean.signp.specifyNationality}"  p:placeholder="Supply country name. For Non-Nigerians only" label="Specify Nationalility [For Non-Nigerians ONLY]" />
+                                            </b:column>
+
+                                            <b:column medium-screen="5" offset="1" >
+                                                <b:selectOneMenu id="nationality"  value="#{signupBean.signp.nationality}" label="Nationality:" required="true" class="form-control" requiredMessage="Pls, enter Nationality" style="background: lightcyan; color: grey">  
+                                                    <f:selectItem itemLabel="Select Nationality" itemValue=""  />
+                                                    <f:selectItem itemLabel="Nigerian" itemValue="Nigerian" />
+                                                    <f:selectItem itemLabel="Non-Nigeria" itemValue="Non-Nigeria" />
+                                                </b:selectOneMenu>
+                                            </b:column>
+
+                                        </b:row>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <b:row>
+                                            <b:column medium-screen="5" >
+                                                <b:selectOneMenu  id="state" label="State of Origin:" value="#{signupBean.signp.stateOfOrigin}">
+                                                    <f:selectItem itemLabel="SELECT STATE OF ORIGIN" itemValue="" noSelectionOption="true" />
+                                                    <f:selectItems value="#{signupBean.get_StatesMthd()}"  /> 
+                                                </b:selectOneMenu>
+                                            </b:column>
+                                            <b:column medium-screen="5" offset="1" >
+                                                <b:selectOneMenu   id="lga"   value="#{signupBean.signp.lgaOrigin}" label="Local Govt. of Origin">
+                                                    <f:selectItem itemLabel="SELECT LOCAL GOVT" itemValue="" noSelectionOption="true"/>
+                                                    <f:selectItems value="#{signupBean.get_LGAsMthd()}"  /> 
+                                                </b:selectOneMenu>
+                                            </b:column>
+
+                                        </b:row>
+
+                                    </div>
+
+ 
+                                    <div class="col-sm-12">
+                                        <b:row>
+                                            <b:column medium-screen="5" >
+                                                <h:outputLabel value="G.S.M. No:" /> <br/>
+                                                <p:inputMask id="gsm"  value="#{signupBean.signp.gsm}" class="form-control" mask="999-999-99999" label="GSM:" required="true" requiredMessage="Pls, enter gsm no. in the format 080XXXXXXXX"/>
+                                            </b:column>
+
+                                            <b:column medium-screen="5" offset="1">
+                                                <b:inputText  id="email1" value="#{signupBean.signp.emailId}"  required="true" label="Email ID:" p:placeholder="a valid email id" validatorMessage="Pls, provide a valid E-mail ID of type:
+                                                              myemail@domain.com!, you may be contacted via your email" onkeyup="true" > 
+                                                    <f:validateRegex  pattern="([a-zA-Z0-9]+)([\_\.\-{1}])?([a-zA-Z0-9]+)\@([a-zA-Z0-9]+)([\.])([a-zA-Z\.]+)" /> 
+                                                </b:inputText>          
+                                            </b:column>
+                                        </b:row>
+
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <b:row>
+
+                                            <b:column medium-screen="5" >
+                                                <b:selectOneMenu id="sex" class="form-control" value="#{signupBean.signp.sex}" label="Sex:" required="true" requiredMessage="Pls, enter sex" style="background: lightcyan; color: grey">
+                                                    <f:selectItem itemLabel="Select Sex" itemValue="" />
+                                                    <f:selectItem itemLabel="Male" itemValue="Male" />
+                                                    <f:selectItem itemLabel="Female" itemValue="Female" />
+                                                </b:selectOneMenu> 
+                                            </b:column>
+                                            <b:column medium-screen="5" offset="1">
+                                                <b:inputText id="NextofKin"  value="#{signupBean.signp.nextOfKinName}"  required="true"  p:placeholder="FullName of Next of kin" label="Next of Kin:" requiredMessage="Pls, enter Next of kin."  />
+                                            </b:column>
+                                        </b:row>
+
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <b:row>
+                                            <b:column medium-screen="5" >
+                                                <b:inputText id="NextofKinAddress"  value="#{signupBean.signp.nextOfKinAddress}"  required="true" label="Next of Kin Address" requiredMessage="Pls, enter Next of Kin Address." />
+                                            </b:column>
+                                            <b:column medium-screen="5" offset="1">
+                                                <b:inputText id="Relationship"  value="#{signupBean.signp.relationship}"  p:placeholder="Your relation with the next of kin" required="true"  label="Relationship" requiredMessage="Pls, enter relationship"  />
+                                            </b:column>
+                                        </b:row>
+
+                                    </div>
+
+                                    <b:form>
+                                        <div style="color: white; background: white; background-color: white">
+                                            <p:spacer />         
+                                        </div>
+                                    </b:form>
+
+                                    <div class="col-sm-10">
+                                        <b:row>
+                                            <b:column medium-screen="6" offset="7">
+                                                <b:column medium-screen="5">
+                                                    <b:button style="background: green" value="Next Step" 
+                                                              onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
+                                                              look="success" />
+                                                </b:column>
+                                            </b:column>
+
+                                        </b:row>
+                                    </div>
+
+                                </b:panel>
+
+                            </b:carouselItem>
+
+                            <b:carouselItem style="width:1000px; height:1200px; background: none" class="form-control">
+
+                                <b:panel style="font-family: 'Kanit', sans-serif;; color: black; height:1100px;" title="Membership Registration Form | Step 2 (cont.)" look="Default" class="col-sm-12">
+                                    <div class="col-sm-12">
+                                        <b:row>
+                                            <b:column medium-screen="5" >
+                                                <b:selectOneMenu id="category"  value="#{signupBean.signp.category}"  required="true" label="Category" requiredMessage="Pls, enter Next of category" style="background: lightcyan; color: grey" >
+                                                    <f:selectItem itemLabel="Select Category" itemValue=""  />
+                                                    <f:selectItem itemLabel="Personnel" itemValue="Personnel" />
+                                                    <f:selectItem itemLabel="Civilian" itemValue="Civilian" />
+                                                </b:selectOneMenu>
+                                            </b:column>
+                                        </b:row>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <b:row>
+                                            <b:column medium-screen="5" >
+                                                <b:inputText id="NextofKinsPhoneNo" label="Phone No:" class="form-control" p:placeholder="A valid phone no. for the next of kin" value="#{signupBean.signp.phoneNo}" required="true" requiredMessage="Pls, enter the Next of Kin Phone no." />
+                                            </b:column>
+                                            <b:column medium-screen="5" offset="1">
+                                                <b:inputText id="openBalance"  disabled="true" value="#{signupBean.signp.openBalance}"  label="OpenBalace" />
+                                            </b:column>
+                                        </b:row>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <b:row>
+                                            <b:column medium-screen="5" >
+                                                <b:inputText id="accountName"  value="#{signupBean.signp.accountName}"  required="true" p:placeholder="Account name for the AFIT Member"  label="Account Name:" requiredMessage="Pls, enter account name" />
+                                            </b:column>
+                                            <b:column medium-screen="5" offset="1">
+                                                <b:inputText id="Savings"  value="#{signupBean.signp.savings}"  required="true" label="Monthly Savings [FOR NEW MEMBERS ONLY]" requiredMessage="Pls, enter Savings" />
+                                            </b:column>
+                                        </b:row>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <b:row>
+                                            <b:column medium-screen="5">
+                                                <b:dateTimePicker  id="StartDate" show-today-button="true" show-time="false" value="#{signupBean.signp.startDate}" p:placeholder="Start Date"   required="true" label="Start Date:" required-message="Pls, supply Start Date"/>
+                                            </b:column>
+                                            <b:column medium-screen="5" offset="1">
+                                                <b:selectOneMenu  id="Method"  value="#{signupBean.signp.method}" class="form-control" required="true" requiredMessage="Pls, enter Method" label="Method" style="background: lightcyan; color: grey" >
+                                                    <f:selectItem itemLabel="Select Method" itemValue="" />
+                                                    <f:selectItem itemLabel="Direct Deductions" itemValue="Direct Deductions" />
+                                                    <f:selectItem itemLabel="In-Direct" itemValue="In-Direct" />
+                                                </b:selectOneMenu>
+                                            </b:column>
+                                        </b:row>
+                                    </div>
+
+
+                                    <div class="col-sm-12">
+                                        <b:row>
+                                            <b:column medium-screen="5">
+                                                <b:selectOneMenu  style="background: lightcyan; color: grey" id="Bank" class="form-control" value="#{signupBean.signp.bankName}" required="true" label="Bank:" required-message="Pls, supply bank" >
+                                                    <f:selectItem itemLabel="Select Bank" itemValue=""  noSelectionOption="true"/>
+                                                    <f:selectItem itemLabel="ACCESS PLC" itemValue="ACCESS PLC" />
+                                                    <f:selectItem itemLabel="ECO BANK NIG. PLC" itemValue="ECO BANK NIG. PLC" />
+                                                    <f:selectItem itemLabel="FCMB" itemValue="FCMB" />
+                                                    <f:selectItem itemLabel="FIDELITY PLC" itemValue="FIDELITY PLC" />
+                                                    <f:selectItem itemLabel="GTB PLC" itemValue="GTB PLC" />
+                                                    <f:selectItem itemLabel="POLARIS BANK PLC" itemValue="POLARIS BANK PLC" />
+                                                    <f:selectItem itemLabel="STANBIC IBTC BANK PLC" itemValue="STANBIC IBTC BANK PLC" />
+                                                    <f:selectItem itemLabel="UNION BANK" itemValue="UNION BANK" />
+                                                    <f:selectItem itemLabel="UBA PLC" itemValue="UBA PLC" />
+                                                    <f:selectItem itemLabel="WEMA PLC" itemValue="WEMA PLC" />
+                                                    <f:selectItem itemLabel="ZENITH BANK PLC" itemValue="ZENITH BANK PLC" />
+
+                                                </b:selectOneMenu>
+                                            </b:column>
+                                            <b:column medium-screen="5" offset="1">
+                                                <b:inputText  id="AccountNo"  value="#{signupBean.signp.accountNo}" required="true" label="Account No:" requiredMessage="Pls, enter account no" />
+                                            </b:column>
+                                        </b:row>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <b:row>
+                                            <b:column medium-screen="5">
+                                                <b:inputText id="BankAddress"   value="#{signupBean.signp.bankAddress}" required="true" label="Bank Address:" required-message="Pls, supply bank address"/>
+                                            </b:column>
+                                            <b:column medium-screen="5" offset="1">
+                                                <b:inputText  id="TotalSaving"  disabled="true" value="#{signupBean.signp.totalSavings}" label="Total Savings:" />
+                                            </b:column>
+                                        </b:row>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <b:row>
+                                            <b:column medium-screen="5">
+                                                <b:inputText  id="SavingBalance"  disabled="true" value="#{signupBean.signp.savingbalance}" required="true" label="SavingBalance" required-message="Pls, supply saving balance"/>
+                                            </b:column>
+                                            <b:column medium-screen="5" offset="1">
+                                                <b:selectOneMenu  id="status" value="#{signupBean.signp.status}" required="true" label="Status:" requiredMessage="Pls, enter Status" style="background: lightcyan; color: grey" >
+                                                    <f:selectItem itemLabel="Select Status" itemValue="" />
+                                                    <f:selectItem itemLabel="Active" itemValue="Active" />
+                                                    <f:selectItem itemLabel="In-Active" itemValue="In-Active" />
+                                                </b:selectOneMenu>
+                                            </b:column>
+                                        </b:row>
+                                    </div>
+
+                                    <b:form>
+                                        <div style="color: white; background: white; background-color: white">
+                                            <p:spacer />         
+                                        </div>
+                                    </b:form>
+
+                                    <div class="col-xs-6  col-sm-12">
+                                        <b:row>
+                                            <b:column medium-screen="5" >
+                                                <b:button value="Prev. Step"  style="background: blue"
+                                                          onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
+                                                          look="info" />
+                                            </b:column>
+                                              
+                                            <b:column medium-screen="5" offset="1">
+                                                <b:button style="background: green"  value="Next Step"
+                                                          onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
+                                                          look="success" />
+                                            </b:column>
+
+                                        </b:row>
+                                       
+                                    </div>
+                                   
+                                </b:panel>
+                                
+                            </b:carouselItem>
+
+                            <b:carouselItem style="width:1000px;height:630px"  class="form-control">
+
+                                <b:panel style="font-family: 'Kanit', sans-serif; color: black" title="Membership Registration Form | Step 3 (Login Details)" look="default" class="col-sm-12">
+
+                                    <div class="col-sm-12">
+                                        <b:row>
+                                            <b:column medium-screen="5">
+                                                <b:inputText value="#{signupBean.signp.username}"  label="Username:" placeholder="the username you will use for login" required="true" requiredMessage="Pls, supply username" />
+                                            </b:column>
+                                            <b:column medium-screen="6" offset="1">
+                                            </b:column>
+                                        </b:row>
+                                    </div>
+
+
+                                    <div class="col-sm-12">
+                                        <b:row>
+                                            <b:column medium-screen="5">
+                                                <h:outputLabel for="pwd1" value="Password: "/> <br/>
+                                                <p:password id="pwd1" value="#{signupBean.signp.password}" class="form-control" required="true" feedback="true" match="pwd2" label="Password maching error. Pls, supply matching password"  />
+                                            </b:column>
+                                            <b:column medium-screen="6" offset="1">
+                                                <h:outputLabel for="pwd2" value="Confirm Password:"/> <br/>
+                                                <p:password id="pwd2" value="#{signupBean.signp.confirmPassword}" required="true" class="form-control" feedback="false"  label="Password maching error. Pls, supply matching password"/>
+                                            </b:column>
+                                        </b:row>
+                                    </div>
+
+
+                                 <!-- 
+                                 
+                                 -->
+
+                                    <b:form>
+                                        <div style="color: white; background: white; background-color: white">
+                                            <p:spacer />         
+                                        </div>
+                                    </b:form>
+
+
+
+                                    <div class="col-xs-6  col-sm-12">
+                                        <b:row>
+                                            <b:column medium-screen="5">
+                                                <b:button value="Prev. Step" style="background: blue"
+                                                          onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
+                                                          look="primary" />
+                                            </b:column>
+                                            <b:column medium-screen="5" offset="1">
+                                                <b:commandButton value="Signup" action="#{signupBean.signupMethod()}" look="primary" style="width: 20%; background: #660066"  process="@form" update="@form" />
+                                            </b:column>
+                                        </b:row>
+                                    </div>
+
+                                </b:panel>
+
+                            </b:carouselItem>
+
+
+                            <b:carouselControl direction="right" >
+                                <!-- nothing is here -->
+                            </b:carouselControl>
+                            <b:carouselControl direction="left">
+                                <!-- nothing is here -->
+                            </b:carouselControl>
+                        </b:carousel>
+
+                    </p:panel>
+
+                    <div class="col-sm-1" >
+                        <!-- a one col. space -->
+                    </div>
+
+
+                 </h:form>
+
+            </div> <!-- bigger div ends here-->
+
+            <section>
+                <footer>
+                    <canvas id="c" width="400" height="70"></canvas>
+
+                </footer>
+            </section>
+
+        </b:container>
+
+        <!-- adding the footer -->
+        <div align="center">
+            <h:form style="background: #336600;" >
+                <ui:include src="footer.xhtml"/>
+            </h:form>
+        </div>
+
+    </h:body>
+
+</html>
+

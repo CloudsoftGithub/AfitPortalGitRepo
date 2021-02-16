@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>login</title>
+        <link rel="shortcut icon"  href="#{request.contextPath}/resources/images/Logo.png" type="image/x-icon"/> 
+
+    </h:head>
+    <h:body>
+        <h:form>
+            <div>
+                <b:form>
+                    <ui:include  src="header.xhtml" />
+                </b:form>
+            </div>
+
+            <p:spacer height="50px" />
+            <b:container>
+                <div class="col-sm-4">
+
+                </div> 
+
+                <b:form>
+                    <div class="col-sm-4">
+                        <!--  <b:messages id="msg" /> -->
+                        <b:growl id="msgAdmin" show-detail="false" delay="8000" />
+                        <b:panel title="Admin User Login Panel" style="background:  #000000; color: white; font-size: medium">
+                            <h2 style="font-family: 'Pacifico', monospace; color: #936be8">Please, login here.</h2>
+                            <br style="height: 30px"  />
+
+                            <b:inputText tooltip="supply your username" type="text" value="#{rootLoginBEAN.username}" class="form-control" label="username" placeholder="username" required="true" requiredMessage="Pls, supply your username" />
+                            <b:inputSecret tooltip="supply your password" type="password" value="#{rootLoginBEAN.password}" class="form-control" label="password" placeholder="Password" required="true" requiredMessage="Pls, supply your password"/>      
+                            <p:separator  />
+                            <p:commandButton  style="background: blue; color: white" value="login" action="#{rootLoginBEAN.adminuserLogin()}" update="msgAdmin"/> 
+                        </b:panel>
+                        <p:spacer height="100px"/>
+                    </div>
+
+                </b:form>
+
+                <div class="col-sm-4">
+
+                </div>
+            </b:container>
+        </h:form>
+    </h:body>
+</html>
+

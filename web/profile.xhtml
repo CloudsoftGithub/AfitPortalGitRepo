@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>profile</title>
+        <link rel="shortcut icon"  href="#{request.contextPath}/resources/images/Logo.png" type="image/x-icon"/> 
+
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+
+    </h:head>
+
+    <h:body style="font-size: small;background: lightgray">
+        <div align="center">
+            <h:form >
+                <ui:include src="usersHeader.xhtml"/>
+            </h:form>
+        </div>
+
+        <b:container  fluid="false" > 
+            <b:form>
+
+                <div>
+                    <p:spacer height="10px" /> <!-- this is a space  -->
+                </div>
+
+                <b:form>
+                    <p:growl id="messages" showDetail="true" sticky="true" />
+                </b:form>
+
+                <div class="col-sm-4">
+
+                    <b:form>
+                        <p:panel style="height: 800px; background: red ">
+
+                         <b:flyOutMenu style="font-size: x-large; background: #FF3B30">
+                                <b:navLink value="Dashboard" outcome="usersDashboard.xhtml" style="background: gray; color: white" ></b:navLink>
+<!--                                 <b:navLink value="Profile" outcome="profile.xhtml" ></b:navLink>
+ -->
+                                <b:dropMenu value="Loan Application">
+                                    <b:navLink value="New Loan" outcome="loan_Application.xhtml" > </b:navLink>
+                                    <!--                                     <b:navLink value="Top-up Loan" outcome="top_up_loan.xhtml"> </b:navLink>
+                                    -->
+                                </b:dropMenu>
+                                <b:navLink value="Savings Revision" outcome="savingsRevision.xhtml" ></b:navLink>
+                                <!-- <b:navLink value="Part Withdrawal" outcome="part_withdrawal.xhtml" ></b:navLink> -->
+                                <!-- <b:navLink value="Termination of Membership" outcome="termination_of_membership.xhtml" ></b:navLink> -->
+
+                                <b:dropMenu value="Reports">
+                                    <b:navLink value="Savings Reports" outcome="savings_report.xhtml" > </b:navLink>
+                                    <b:navLink value="Loan Reports"  outcome="loan-report.xhtml"> </b:navLink>
+                                </b:dropMenu>
+                            </b:flyOutMenu>
+                        </p:panel>
+                    </b:form>
+                </div>
+
+                <div class="col-sm-8" >
+                    <h:form style="padding: 5px">
+                        <p:panel style="height:  800px;">
+                            <h1 style="background: lightslategray; color: white"> Membership Profile </h1> 
+                            <p:separator />
+                            <h3 style="background: #FF3B30; color: white" align="center" > Edit User Profile </h3>  
+                            <h3>  <h:inputText  class="col-sm-8 form-control text-center" id="myuser"  value="#{usersLoginBEAN.serviceNo}" style="background: #66ff33"/> </h3>
+
+                            <b:row >
+                                <b:column medium-screen="5">
+                                    <b:inputText id="ServiceNo"  value="#{profileInfoBEAN.servicesNo}" label="Service No:" />
+                                </b:column>
+
+                                <b:column medium-screen="5" offset="1">
+
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="5">
+                                    <b:inputText id="surname"  value="#{signupBean.signp.surename}"  label="Surename:" />
+                                </b:column>
+
+                                <b:column medium-screen="5" offset="1">
+                                    <b:inputText id="othername"  value="#{signupBean.signp.othernames}" label="Other Names:" />
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="5"  >
+                                    <b:selectOneMenu  id="state" label="State of Origin:"  value="#{signupBean.signp.stateOfOrigin}"  >
+                                        <f:selectItem itemLabel="SELECT STATE OF ORIGIN" itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="#{signupBean.get_StatesMthd()}"  /> 
+                                    </b:selectOneMenu>
+                                </b:column>
+
+                                <b:column medium-screen="5" offset="1"  >
+                                    <b:selectOneMenu   id="lga"   value="#{signupBean.signp.lgaOrigin}" label="Local Govt.">
+                                        <f:selectItem itemLabel="SELECT LOCAL GOVT" itemValue="" noSelectionOption="true"/>
+                                        <f:selectItems value="#{signupBean.get_LGAsMthd()}"  /> 
+                                    </b:selectOneMenu>
+                                </b:column>
+                            </b:row>
+
+                            <b:row>
+                                <b:column medium-screen="5" >
+                                    <h:outputLabel value="G.S.M. No:" /> <br/>
+                                    <p:inputMask id="gsm"  value="#{signupBean.signp.gsm}" class="form-control" mask="999-999-99999" label="GSM:" />
+                                </b:column>
+
+                                <b:column medium-screen="5" offset="1" >
+                                    <b:inputText  id="email1" value="#{signupBean.signp.emailId}" label="Email ID:" p:placeholder="a valid email id" validatorMessage="Pls, provide a valid E-mail ID of type:
+                                                  myemail@domain.com!, you may be contacted via your email" onkeyup="true" > 
+                                        <f:validateRegex  pattern="([a-zA-Z0-9]+)([\_\.\-{1}])?([a-zA-Z0-9]+)\@([a-zA-Z0-9]+)([\.])([a-zA-Z\.]+)" /> 
+                                    </b:inputText>          
+                                </b:column>
+                            </b:row>
+
+                            <b:row>
+                                <b:column medium-screen="5" >
+                                    <b:selectOneMenu id="sex" class="form-control" value="#{signupBean.signp.sex}" label="Sex:" style="background: lightcyan; color: grey">
+                                        <f:selectItem itemLabel="Select Sex" itemValue="" />
+                                        <f:selectItem itemLabel="Male" itemValue="Male" />
+                                        <f:selectItem itemLabel="Female" itemValue="Female" />
+                                    </b:selectOneMenu>  
+                                </b:column>
+                                <b:column medium-screen="5" offset="1">
+                                    <b:inputText id="NextofKin"  value="#{signupBean.signp.nextOfKinName}" p:placeholder="FullName of Next of kin" label="Next of Kin:" />
+                                </b:column>
+                            </b:row>
+
+
+                            <b:row>
+                                <b:column medium-screen="5" >
+                                    <b:inputText id="Relationship"  value="#{signupBean.signp.relationship}"  p:placeholder="Your relation with the next of kin" label="Relationship" />
+                                </b:column>
+                                <b:column medium-screen="5" offset="1">
+                                     <b:inputText id="NextofKinsPhoneNo" label="Phone No:" class="form-control" p:placeholder="A valid phone no of the next of kin" value="#{signupBean.signp.phoneNo}" />
+                                 </b:column>
+                            </b:row>
+                             
+                            <b:row>
+                                <p:separator style="padding-bottom: auto" />
+                                     <div align="center" style="background: lightgray">
+                                         <b:commandButton value="Save Chages" tooltip="Click to save changes made!" action="#{profileInfoBEAN.pullingProfileInfoMthd()}" look="primary" style=" background: #660066"  process="@form" update="@form" />
+                                    </div>
+                                 
+                            </b:row>
+                        </p:panel>
+                    </h:form>
+
+                </div>
+            </b:form>
+        </b:container>            
+
+
+        <!-- adding the footer -->
+
+
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.mixitup.min.js" ></script>
+        <script src="resources/js/wow.min.js"></script>
+        <script src="resources/js/jquery.validate.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.hoverdir.js"></script>
+        <script type="text/javascript" src="resources/js/jQuery.scrollSpeed.js"></script>
+        <script src="resources/js/script.js"></script>
+
+        <!-- js -->
+        <script type="text/javascript" src="resources/js/jquery-2.1.4.min.js"></script>
+        <!-- //js -->
+
+    </h:body>
+</html>
+
+
+

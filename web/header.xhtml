@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>header</title>
+        <link rel="shortcut icon"  href="#{request.contextPath}/resources/images/Logo.png" type="image/x-icon"/> 
+
+    </h:head>
+    <h:body>
+
+        <b:container  fluid="true" >
+
+
+            <div style="color: #3817da; font-family: 'Kanit',monospace">
+                <b:navBar brand="AFIT Society Portal | " brand-href="http://afitcooperative.com/" style="background: #3817da; color: black; font-family: sans-serif; font-size: x-large; font-style: normal;" fixed="top" inverse="true">
+                    <b:navbarLinks >
+                        <b:navLink value="About" outcome="about">  </b:navLink>
+                        <b:navLink value="Signup" outcome="signup">  </b:navLink>
+                        <b:navLink value="Login" outcome="Login" >  </b:navLink>
+                        <!--    <b:navLink value="AdminLogin" outcome="AdminLogin.xhtml">  </b:navLink>
+                                <b:navLink value="RootLogin" outcome="RootuserLogin.xhtml">  </b:navLink>
+                        -->
+                        <!-- <b:navLink value="Contact">  </b:navLink> -->
+                    </b:navbarLinks>
+                </b:navBar>
+            </div>
+            
+        
+        </b:container>
+
+    </h:body>
+</html>
+

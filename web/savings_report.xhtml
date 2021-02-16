@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>savings-report</title>
+        <link rel="shortcut icon"  href="#{request.contextPath}/resources/images/Logo.png" type="image/x-icon"/> 
+
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+
+    </h:head>
+
+    <h:body style="font-size: small;background: #036b95" >
+        <div align="center">
+            <h:form >
+                <ui:include src="usersHeader.xhtml"/>
+            </h:form>
+        </div>
+
+        <b:container  fluid="false" > 
+            <div>
+                <p:spacer height="10px" /> <!-- this is a space  -->
+            </div>
+
+
+            <b:form>
+                <p:growl id="messages" showDetail="true" sticky="true" />
+            </b:form>
+
+            <div class="col-sm-4" >
+
+                <h:form>
+                    <p:panel style="height: 850px; background: red ">
+                        <b:flyOutMenu style="font-size: x-large; background: #FF3B30">
+                            <b:navLink value="Dashboard" outcome="usersDashboard.xhtml" style="background: gray; color: white" ></b:navLink>
+                            <!--                                 <b:navLink value="Profile" outcome="profile.xhtml" ></b:navLink>
+                            -->
+                            <b:dropMenu value="Loan Application">
+                                <b:navLink value="New Loan" outcome="loan_Application.xhtml" > </b:navLink>
+                                <b:navLink style="background: #d8cfe5" value="Loan Liquidation" outcome="loan_liquidation.xhtml" ></b:navLink>
+                                 <b:navLink style="background: #d8cfe5" value="Loan Liquidation History" outcome="loan_liquidation_history.xhtml" ></b:navLink>
+ 
+                            </b:dropMenu>
+                            <b:navLink value="Savings Revision" outcome="savingsRevision.xhtml" ></b:navLink>
+
+                            <b:dropMenu value="Reports">
+                                <b:navLink value="Savings Reports" outcome="savings_report.xhtml" > </b:navLink>
+                                <b:navLink value="Loan Reports"  outcome="loan-report.xhtml"> </b:navLink>
+                            </b:dropMenu>
+
+                            <b:navLink value="E-Notice" outcome="view_notice.xhtml" style="background: #55e7e2; color: whitesmoke" ></b:navLink>
+
+                        </b:flyOutMenu>
+
+                    </p:panel>
+
+                </h:form>
+ 
+            </div>
+
+            <div class="col-sm-8" >
+
+                <b:form  id="viewSavingsReportForm" style="background: #d685ef;width: 900px" >
+
+                    <b:panel id="viewSavingsReportPanel"  style="background:  #9173e4; color: black; font-size: small;width: 900px">
+
+                        <!--- Printing command  -->
+                        <p:commandButton value="Print" type="button" icon="ui-icon-print" >
+                            <p:printer  target="viewSavingsReportPanel" />
+                        </p:commandButton>
+                        <h1 style="background: lightslategray; width: 800px" > Savings Report </h1> 
+
+
+                        <h:panelGrid cellspacing="12" cellpadding="1" >
+
+                            <p:messages id="msg1" showDetail="true" autoUpdate="true" closable="true" style="font-size: medium; background: red; color: whitesmoke"/>
+                            <h:inputText class="col-sm-8 form-control text-left" id="myServiceNo"  value="#{usersLoginBEAN.serviceNo}" style="background: #66ff33; width: 800px;font-size: xx-large"/>  
+                            <h:inputText class="col-sm-8 form-control text-uppercase" id="myusername"  value="#{usersLoginBEAN.fullname}" style="background: lightyellow; width: 800px; font-size: x-large"/>  
+
+                            <p:separator />
+
+                            <div class="col-sm-8" >
+
+                                <b:dataTable  id="viewSavingsReport" value="#{viewSavigns_report.savings_reportInfo}" var="item" style="width: 800px; background: #91bec9">
+                                    <f:facet name="header">
+                                        <h:outputText value="Savings Report" />
+                                    </f:facet>
+
+                                    <b:column >
+                                        <f:facet name="header">
+                                            <h:outputText value="Service No." style="width: 70px"></h:outputText>
+                                        </f:facet>
+                                        <h:outputText escape="false" value="#{item.serviceNo}"></h:outputText>
+                                    </b:column>
+
+
+                                    <b:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Type" ></h:outputText>
+                                        </f:facet>
+                                        <h:outputText escape="false" value="#{item.type}"></h:outputText>
+                                    </b:column>
+
+                                    <b:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Trans Date" ></h:outputText>
+                                        </f:facet>
+                                        <h:outputText escape="false" value="#{item.transactionDate}"></h:outputText>
+                                    </b:column>
+
+                                    <b:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Year" ></h:outputText>
+                                        </f:facet>
+                                        <h:outputText escape="false" value="#{item.transactionYear}"></h:outputText>
+                                    </b:column>
+                                    <b:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Month" ></h:outputText>
+                                        </f:facet>
+                                        <h:outputText escape="false" value="#{item.transactionMonth}"></h:outputText>
+                                    </b:column>
+
+                                    <b:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Details" ></h:outputText>
+                                        </f:facet>
+                                        <h:outputText escape="false" value="#{item.details}"></h:outputText>
+                                    </b:column>
+                                    <b:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Dr" ></h:outputText>
+                                        </f:facet>
+                                        <h:outputText escape="false" value="#{item.dr}"></h:outputText>
+                                    </b:column>
+                                    <b:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Cr" ></h:outputText>
+                                        </f:facet>
+                                        <h:outputText escape="false" value="#{item.cr}"></h:outputText>
+                                    </b:column>
+                                    <b:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Balance" ></h:outputText>
+                                        </f:facet>
+                                        <h:outputText escape="false" value="#{item.balance}"></h:outputText>
+                                    </b:column>
+                                </b:dataTable>
+
+                            </div>
+
+                            <p:commandButton  style="width: 300px; height: 100px; font-size: large; background: #2fc79c; color: black" value="Click here to view report !" ajax="false" action="#{viewSavigns_report.enableGoButton()}" update="msg1,viewSavingsReport"/> 
+
+                        </h:panelGrid>
+
+
+                    </b:panel>
+
+                    <p:spacer height="0px" />
+
+                </b:form>
+
+            </div>
+
+        </b:container>            
+
+
+        <!-- adding the footer -->
+
+
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.mixitup.min.js" ></script>
+        <script src="resources/js/wow.min.js"></script>
+        <script src="resources/js/jquery.validate.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.hoverdir.js"></script>
+        <script type="text/javascript" src="resources/js/jQuery.scrollSpeed.js"></script>
+        <script src="resources/js/script.js"></script>
+
+        <!-- js -->
+        <script type="text/javascript" src="resources/js/jquery-2.1.4.min.js"></script>
+        <!-- //js -->
+
+    </h:body>
+</html>
+
+
+
